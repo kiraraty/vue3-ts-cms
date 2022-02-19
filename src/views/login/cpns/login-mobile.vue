@@ -14,7 +14,7 @@
 
 <script lang="ts">
 import { defineComponent, reactive } from 'vue'
-import {mobileRules} from '../config/mobile-config'
+import { mobileRules } from '../config/mobile-config'
 export default defineComponent({
   setup() {
     const phone = reactive({
