@@ -12,9 +12,10 @@ const app = createApp(App)
 
 // 注册element-plus/其他
 app.use(globalRegister)
-app.use(router)
+
 app.use(store)
 setupStore()
+app.use(router) //顺序需要确定好，不然会导致路由错误
 app.mount('#app')
 
 hyRequest.request({

@@ -5,8 +5,14 @@
         <nav-menu :collapse="isCollapse" />
       </el-aside>
       <el-container class="page">
-        <el-header class="page-header"> </el-header>
-        <el-main class="page-content"> </el-main>
+        <el-header class="page-header">
+          <nav-header @foldChange="handleFoldChange" />
+        </el-header>
+        <el-main class="page-content">
+          <div class="page-info">
+            <router-view></router-view>
+          </div>
+        </el-main>
       </el-container>
     </el-container>
   </div>
@@ -48,6 +54,9 @@ export default defineComponent({
 }
 .page-content {
   height: calc(100%-48px);
+  .page-info {
+    background-color: #fff;
+  }
 }
 .el-header,
 .el-footer {
