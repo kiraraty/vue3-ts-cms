@@ -1,47 +1,52 @@
 <template>
   <div class="page-search">
-     <SEForm  v-model="FormData">
+    <SEForm v-bind="searchFormConfig" v-model="FormData">
       <template>
-        <h2>高级检索</h2>
+        <h2 class="header">高级检索</h2>
       </template>
       <template #footer>
         <dir class="handle-btns">
-        <el-button type="primary" icon="el-icon-refresh">重置</el-button>
-        <el-button type="primary" icon="el-icon-search">搜索</el-button>
+          <el-button type="primary" icon="el-icon-refresh">重置</el-button>
+          <el-button type="primary" icon="el-icon-search">搜索</el-button>
         </dir>
-    </template>
+      </template>
     </SEForm>
   </div>
 </template>
 
-<script lang='ts'>
-import { defineComponent,ref } from 'vue'
-import PageSearch from '@/components/page-search'
+<script lang="ts">
+import { defineComponent, ref } from 'vue'
 import SEForm from '@/base-ui/form'
-export default defineComponent ({
-  props:{
-    searchFormConfig:{
-      type:Object,
-      required:true
+export default defineComponent({
+  props: {
+    searchFormConfig: {
+      type: Object,
+      required: true
     }
   },
-   components: {
+  components: {
     SEForm
   },
-    setup() {
-    const FormData=ref({
-    id:'',
-    name:'',
-    password:'',
-    sport:'',
-    createTime:''
-  })
-      return {
-          FormData
-        }
-      }
-  })
+  setup() {
+    const FormData = ref({
+      id: '',
+      name: '',
+      password: '',
+      sport: '',
+      createTime: ''
+    })
+    return {
+      FormData
+    }
+  }
+})
 </script>
-<style lang='less' scoped>
-
+<style lang="less" scoped>
+.header {
+  color: red;
+}
+.handle-btns {
+  text-align: right;
+  padding: 0 50px 20px 0;
+}
 </style>
