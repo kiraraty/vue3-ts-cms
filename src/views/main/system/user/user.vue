@@ -9,18 +9,27 @@
       ref="pageContentRef"
       :contentTableConfig="contentTableConfig"
       pageName="users"
+      @newBtnClick="handleNewData"
+      @editBtnClick="handleEditData"
     ></page-content>
+    <PageModal
+      ref="pageModalRef"
+      :modalConfig="modalConfig"
+      :defaultInfo="defaultInfo"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
 
 import PageSearch from '@/components/page-search'
 import PageContent from '@/components/page-content'
+import PageModal from '@/components/page-modal'
 
 import { searchFormConfig } from './config/search.config'
 import { contentTableConfig } from './config/content.config'
+import { modalConfig } from './config/modal.config'
 
 import { usePageSearch } from '@/hooks/use-page-search'
 
@@ -28,7 +37,8 @@ export default defineComponent({
   name: 'users',
   components: {
     PageSearch,
-    PageContent
+    PageContent,
+    PageModal
   },
   setup() {
     const [pageContentRef, handleResetClick, handleQueryClick] = usePageSearch()
@@ -36,9 +46,14 @@ export default defineComponent({
     return {
       searchFormConfig,
       contentTableConfig,
+      modalConfig,
       pageContentRef,
       handleResetClick,
-      handleQueryClick
+      handleQueryClick,
+      handleNewData,
+      handleEditData,
+      pageModalRef,
+      defaultInfo
     }
   }
 })
