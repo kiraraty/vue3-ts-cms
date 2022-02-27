@@ -10,7 +10,7 @@
       </span>
       <template #dropdown>
         <el-dropdown-menu>
-          <el-dropdown-item icon="el-icon-circle-close"
+          <el-dropdown-item icon="el-icon-circle-close" @click="handleExitClick"
             >退出登录</el-dropdown-item
           >
           <el-dropdown-item divided icon="el-icon-setting"
@@ -25,15 +25,21 @@
 
 <script lang="ts">
 import { defineComponent, computed } from 'vue'
+import { useRouter } from 'vue-router'
 import { useStore } from '@/store'
-
+import LocalCache from '@/utils/cache'
 export default defineComponent({
   setup() {
     const store = useStore()
+    const router = useRouter()
     const name = computed(() => store.state.login.userInfo.name)
-
+    const handleExitClick = () => {
+      LocalCache.deleteCache('token')
+      router.push('/main')
+    }
     return {
-      name
+      name,
+      handleExitClick
     }
   }
 })

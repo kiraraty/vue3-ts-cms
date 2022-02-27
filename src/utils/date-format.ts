@@ -6,5 +6,5 @@ export function formatUtcString(
   utcStirng: string,
   format: string = DATE_TIME_FORMAT
 ) {
-  return dayjs.utc(utcStirng).format(format)
+  return dayjs.utc(utcStirng).utcOffset(8).format(format)
 }

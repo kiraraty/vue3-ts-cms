@@ -40,7 +40,7 @@
             icon="el-icon-edit"
             size="mini"
             type="text"
-            @click="handleEditClick"
+            @click="handleEditClick(scope.row)"
             >编辑</el-button
           >
           <el-button

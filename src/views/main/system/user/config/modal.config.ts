@@ -18,7 +18,8 @@ export const modalConfig: IForm = {
       field: 'password',
       type: 'password',
       label: '用户密码',
-      placeholder: '请输入密码'
+      placeholder: '请输入密码',
+      isHidden: true
     },
     {
       field: 'cellphone',
@@ -41,6 +42,6 @@ export const modalConfig: IForm = {
       options: []
     }
   ],
-  colLayout: { span: 24 }
-  // itemStyle: {}
+  colLayout: { span: 24 },
+  itemStyle: {}
 }
