@@ -78,7 +78,7 @@ const systemModule: Module<ISystemState, IRootState> = {
       commit(`change${changePageName}List`, list)
       commit(`change${changePageName}Count`, totalCount)
     },
-    async deletePageData({ dispatch }, payload: any) {
+    async deletePageDataAction({ dispatch }, payload: any) {
       //pagename 和id
       const { pageName, id } = payload
       const pageUrl = `${pageName}/${id}`

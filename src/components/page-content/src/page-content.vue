@@ -1,6 +1,6 @@
 <template>
   <div class="page-content">
-    <ESTable
+    <hy-table
       :listData="dataList"
       :listCount="dataCount"
       v-bind="contentTableConfig"
@@ -13,8 +13,9 @@
           type="primary"
           size="medium"
           @click="handleNewClick"
-          >新建用户</el-button
         >
+          新建用户
+        </el-button>
       </template>
 
       <!-- 2.列中的插槽 -->
@@ -41,8 +42,9 @@
             size="mini"
             type="text"
             @click="handleEditClick(scope.row)"
-            >编辑</el-button
           >
+            编辑
+          </el-button>
           <el-button
             v-if="isDelete"
             icon="el-icon-delete"
@@ -64,7 +66,7 @@
           <slot :name="item.slotName" :row="scope.row"></slot>
         </template>
       </template>
-    </ESTable>
+    </hy-table>
   </div>
 </template>
 
@@ -73,11 +75,11 @@ import { defineComponent, computed, ref, watch } from 'vue'
 import { useStore } from '@/store'
 import { usePermission } from '@/hooks/use-permission'
 
-import ESTable from '@/base-ui/table'
+import HyTable from '@/base-ui/table'
 
 export default defineComponent({
   components: {
-    ESTable
+    HyTable
   },
   props: {
     contentTableConfig: {
@@ -115,7 +117,6 @@ export default defineComponent({
         }
       })
     }
-
     getPageData()
 
     // 3.从vuex中获取数据
@@ -137,22 +138,21 @@ export default defineComponent({
       }
     )
 
-    //删除操作
+    // 5.删除/编辑/新建操作
     const handleDeleteClick = (item: any) => {
-      store.dispatch('system/deletePageData', {
+      console.log(item)
+      store.dispatch('system/deletePageDataAction', {
         pageName: props.pageName,
         id: item.id
       })
     }
-    //添加操作
     const handleNewClick = () => {
       emit('newBtnClick')
     }
-
-    //编辑操作
     const handleEditClick = (item: any) => {
       emit('editBtnClick', item)
     }
+
     return {
       dataList,
       getPageData,
